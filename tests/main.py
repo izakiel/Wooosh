@@ -1,4 +1,5 @@
 #Main code#
+from groqllm import llmchat
 
 
 def main():
@@ -7,8 +8,9 @@ def main():
 
     while True:
         query=input("You:")
-        if query.lower() not in ["bye","quit"]:
-            print(f"Woosh:You said '{query}'")
+        if query.lower() not in ["bye","quit","exit"]:
+            response=llmchat(query)
+            print(f"Woosh:{response}")
         else:
             print("Woosh:Bye,see you later!")
             break
