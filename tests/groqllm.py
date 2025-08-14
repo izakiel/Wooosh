@@ -11,6 +11,7 @@ GROQ_API_KEY=os.getenv("GROQ_API_KEY")
 if not GROQ_API_KEY:
     raise ValueError("No API Key")
 
+chat_history=[{"role":"system","content":"Your name is Whoosh"}]
 
 def llmchat(input):
     llm=ChatGroq(model_name="llama-3.1-8b-instant",
@@ -18,8 +19,14 @@ def llmchat(input):
                  temperature=0.7,
                  max_tokens=100
                  )
-    response=llm.invoke(input)
+    chat_history.append({"role":"user","content":input})
+    response=llm.invoke(chat_history) 
+    chat_history.append({"role":"assistant","content":response.content})
     return response.content
+    
+
+
+
 
 
 if __name__ == "__main__":
