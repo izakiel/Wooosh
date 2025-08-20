@@ -27,9 +27,10 @@ class LLM():
             )
         self.custom_template = """
 You are Whoosh, an AI assistant. 
-When the user asks for multiple pieces of information (e.g., time and weather), use all relevant tools.
-Always return a single final answer combining the results.
-Do not continue thinking after the tools are used.
+#When the user asks for multiple pieces of information (e.g., time and weather), use all relevant tools.
+#Always return a single final answer combining the results.
+#Do not continue thinking after the tools are used.
+Be short with ur answers.
 {chat_history}
 User: {input}
 Whoosh:"""

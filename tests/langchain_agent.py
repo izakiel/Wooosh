@@ -25,7 +25,7 @@ class RagAgent():
             if not API_KEY:
                 print("No API key found")
                 raise ValueError
-            api_endpoint=f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&unit=metric"
+            api_endpoint=f"https://api.openweathermap.org/data/2.5/weather?q={city}&appid={API_KEY}&units=metric"
             try:
                 response=requests.get(api_endpoint).json()
                 if response.get("cod")!=200:
